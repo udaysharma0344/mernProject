@@ -5,6 +5,7 @@ const morgan = require('morgan');
 const mongoose = require("mongoose");
 
 
+const app = express();
 
 dotenv.config();
 app.use(cors());
@@ -12,7 +13,6 @@ app.use(morgan("dev"));
 app.use(express.json());
 
 
-const app = express();
 
     
     const PORT = process.env.PORT;
