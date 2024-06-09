@@ -1,5 +1,7 @@
 const validator = require('validator');
 
+// Singup validator
+
 const singupValidator = (req, res , next)=>{
     try {
         const { name, email, phoneNumber , password } = req.body;
@@ -41,4 +43,37 @@ const singupValidator = (req, res , next)=>{
 
 }
 
-module.exports = singupValidator
+
+// Singin Validator
+
+
+const singinValidator = async (req, res, next)=>{
+    try {
+        const {email , password} = req.body;
+
+    // for Email
+    if(!validator.isEmail(email)){
+        throw new Error('Invalid email address')
+    }
+
+     // for password
+     if(!validator.isLength(password, { min: 8 })){
+        throw new Error('Password must be at least 8 characters long')
+    }
+
+    return next();
+
+
+    } catch (error) {
+        return res.status(400).json({
+            message: error.message,
+            code: error.code || '400'
+        })
+        
+    }
+
+
+}
+
+
+module.exports = {singupValidator, singinValidator }
