@@ -58,7 +58,7 @@ const singinValidator = async (req, res, next)=>{
 
      // for password
      if(!validator.isLength(password, { min: 8 })){
-        throw new Error('Password must be at least 8 characters long')
+        throw new Error('Invalid Password')
     }
 
     return next();
