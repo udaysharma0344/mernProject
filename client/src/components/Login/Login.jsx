@@ -1,5 +1,7 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './Login.css'
+import {useDispatch , useSelector} from 'react-redux'
+import login from "../../redux/action/User.action"
 
 const Login = () => {
 
@@ -15,7 +17,23 @@ const Login = () => {
         setPassword(event.target.value);
     }
 
-    function LoginSubmit(){}
+    function LoginSubmit(){
+      if(!email || !password ){
+        return;
+      }
+      dispactch(login(email, password));
+    }
+
+    useEffect(()=>{
+      if(isAuth) {
+        // navigate to home page
+      }
+      if(error){
+        dispactach({
+          type: "clearMessage",
+        });
+      }
+    },[isAuth,isLoading , error]);
 
 
   return (
