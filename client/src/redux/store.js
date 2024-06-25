@@ -1,7 +1,7 @@
 import {configureStore} from '@reduxjs/toolkit'
 import UserReducer from "./reducer/User.reducer"
-import thunk from "redux-thunk"
-export const store = configureStore({
+import thunk from "thunk"
+ const store = configureStore({
     reducer:{
         User: UserReducer,
     },
@@ -10,3 +10,5 @@ export const store = configureStore({
             thunk,
         }),
 });
+
+export default store

@@ -1,12 +1,17 @@
 import React, { useEffect, useState } from 'react'
 import './Login.css'
 import {useDispatch , useSelector} from 'react-redux'
-import login from "../../redux/action/User.action"
+import {login} from "../../redux/action/User.action.js"
+// import toast from "react-hot-toast"
 
 const Login = () => {
 
     const [email , setEmail] = useState();
     const [password, setPassword] = useState();
+
+    const {isAuth , isLoading  , error } = useSelector((state)=>state.user);
+
+    const dispatch = useDispatch();
     
     function handleEmailChange(event){
         event.preventDefault();
@@ -21,7 +26,7 @@ const Login = () => {
       if(!email || !password ){
         return;
       }
-      dispactch(login(email, password));
+      dispatch(login(email, password));
     }
 
     useEffect(()=>{
@@ -29,7 +34,7 @@ const Login = () => {
         // navigate to home page
       }
       if(error){
-        dispactach({
+        dispatch({
           type: "clearMessage",
         });
       }

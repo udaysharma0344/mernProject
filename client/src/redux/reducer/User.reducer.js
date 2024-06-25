@@ -11,16 +11,16 @@ const userSlice = createSlice({
     initialState,
     reducers:{
         userLoginRequest: (state)=> {
-            state.loading = true;
+            state.isLoading = true;
         },
         userLoginSuccess: (state, action) =>{
-            state.loading = false;
+            state.isLoading = false;
             state.user = action.payload.user;
             state.token = action.payload.token;
             state.isAuth = true;
         },
         userLoginFailed: (state, action) =>  {
-            state.loading = false;
+            state.isLoading = false;
             state.isAuth = false;
             state.error = action.payload.error;
         },
@@ -30,6 +30,6 @@ const userSlice = createSlice({
     },
 });
 
-export const { userLoginFailed , userLoginSuccess , userLoginRequest} = userSlice.action;
+export const { userLoginFailed , userLoginSuccess , userLoginRequest} = userSlice.actions;
 
-export default userSlice ;
+export default userSlice.reducer ;
