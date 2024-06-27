@@ -1,10 +1,10 @@
 import React, { StrictMode } from 'react';
 import App from './App';
-import {createRoot} from "react-dom/client"
-import  store  from "./redux/store" ;
+import  {store}  from "./redux/store" ;
 import {Provider} from 'react-redux';
+// import {createRoot} from "react-dom/client"
 
-// import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom';
 // ReactDOM.render(
 //   <App />,
 //   document.getElementById('root')
@@ -12,15 +12,15 @@ import {Provider} from 'react-redux';
 
 
 const rootElement = document.getElementById('root');
-const root = createRoot(rootElement);
+const root = ReactDOM.createRoot(rootElement);
 
 root.render(
 
     <StrictMode>
-      <Provider store={store}>
+    <Provider store={store}>
+
       <App/>
-      </Provider>
+    </Provider>
     </StrictMode>
-   
- 
+
 )

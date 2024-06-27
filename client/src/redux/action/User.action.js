@@ -1,9 +1,9 @@
 import axios from "axios";
 import { userLoginFailed, userLoginRequest, userLoginSuccess } from "../reducer/User.reducer";
 
-export const login = (email, password) => async (dispactch) => {
+export  const login = (email, password) => async (dispatch) => {
     try {
-        dispactch({
+        dispatch({
             type: userLoginRequest,
         });
 
@@ -12,7 +12,7 @@ export const login = (email, password) => async (dispactch) => {
         if(!userLogin.data.success){
             throw new Error(userLogin.data.message);
         }
-        dispactch({
+        dispatch({
             type: userLoginSuccess,
             payload: {
                 user: userLogin.data.user,
@@ -20,7 +20,7 @@ export const login = (email, password) => async (dispactch) => {
             }
         });
     } catch (error) {
-        dispactch({
+        dispatch({
             type: userLoginFailed,
             payload:{
                 error,
