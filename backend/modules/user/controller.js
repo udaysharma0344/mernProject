@@ -54,6 +54,7 @@ const singinController = async (req,res)=>{
 
     res.status(200).send({
         status:true, 
+        success: true,
         message:"Login Successfully",
         token,
         user:{
