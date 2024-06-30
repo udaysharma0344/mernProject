@@ -3,16 +3,17 @@ import './Login.css'
 import {useDispatch , useSelector} from 'react-redux'
 import { login } from '../../redux/action/user.action'
 import toast from 'react-hot-toast'
+import { useNavigate} from 'react-router-dom'
 
 
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const {isAuth , isLoading  , error ,user } = useSelector((state)=>state.user) // creatSlice > state > access
+  const {isAuth , isLoading  , error ,user , clearMessage} = useSelector((state)=>state.user) // creatSlice > state > access
 
-  // const navigate = useNavigate();
- const dispatch = useDispatch();
+const navigate = useNavigate();
+const dispatch = useDispatch();
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -23,7 +24,7 @@ const Login = () => {
   useEffect(()=>{
      if(isAuth){
            toast.success("Login Successful")
-          //  navigate('/home')
+           navigate('/home')
      }
    
      if(error){
@@ -33,8 +34,8 @@ const Login = () => {
      }
    
     
-    // console.log(isLoading)
-   // console.log(token)
+  // console.log(isLoading)
+  // console.log(token)
   },[isAuth,error])
 
 
@@ -95,6 +96,7 @@ const [showPassword, setShowPassword] = useState(false);
           <i className="fab fa-facebook-f social-icon" />
           <i className="fab fa-twitter social-icon" />
         </div> */}
+        
         <button type="submit">Login</button>
 
         <div className="sign-link">

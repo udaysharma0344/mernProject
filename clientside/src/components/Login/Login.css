@@ -90,18 +90,19 @@ body {
     display: flex;
     height: 100vh;
     align-items: stretch;
-    background-color: #52bed45d;
-    /* background-image: url('../data/images/background.jpg'); */
-    /*  background-repeat: no-repeat;
+    /* background-color: #52bed45d; */
+    background-image: url('../data/images/bg-06.jpg');
+     background-repeat: no-repeat;
     background-position: center;
-    background-size:cover; */
+    background-size:cover; 
     
 }
 
 .left-section {
-    background: url('../data/images/1-removebg-preview.png') no-repeat center center;
+    /* background: url('../data/images/1-removebg-preview.png') no-repeat center center; */
     display: none;
 }
+
 
 .right-section {
     flex-grow: 1;
